@@ -13,4 +13,8 @@ def create_app():
     socketio = SocketIO(app, cors_allowed_origins="*")
     CORS(app, resources={r"/*": {"origins": "*"}})
 
+    from .views import views
+
+    app.register_blueprint(views, url_prefix="/api")
+
     return app, socketio
