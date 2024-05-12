@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-MRT Api
+MRT app
 """
 
 from flask import jsonify
