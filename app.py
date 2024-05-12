@@ -3,20 +3,11 @@
 MRT Api
 """
 
-from flask import Flask, jsonify
-from flask_socketio import SocketIO
-from dotenv import load_dotenv
-from os import getenv
-from flask_cors import CORS
+from flask import jsonify
+from api.config import create_app
+from flask_socketio import emit
 
-
-# Flask Config
-load_dotenv()
-
-app = Flask('__name__')
-app.config['SECRET_KEY'] = getenv("SECRET_KEY")
-socketio = SocketIO(app, cors_allowed_origins="*")
-CORS(app, resources={r"/*": {"origins": "*"}})
+app, socketio = create_app()
 
 
 @socketio.on('connect')
