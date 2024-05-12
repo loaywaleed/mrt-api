@@ -3,13 +3,16 @@
 MRT Api
 """
 
-from flask import Flask
+from flask import Flask, jsonify
+from flask_socketio import SocketIO
 
 app = Flask('__name__')
 
+socketio = SocketIO(app)
+
 @app.route('/')
 def home():
-    return "Hello World"
+    return jsonify({"name": "Menofia Racing Team"})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app, debug=True)
