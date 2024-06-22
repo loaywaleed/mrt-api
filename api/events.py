@@ -8,5 +8,8 @@ def handle_connect():
     socketio.emit('message', 'Hello from Flask')
 
 
-def update_voltage(voltage):
-    socketio.emit('voltage', {'voltage': voltage})
+def update_voltage_range_current(data):
+    socketio.emit('vi_range', {
+        'voltage': data.get('voltage'),
+        'current': data.get('current')
+        })
