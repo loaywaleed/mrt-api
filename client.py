@@ -7,8 +7,9 @@ for i in range(50):
     num += 1
     data = {
         "voltage": num,
-        "current": num * 5
+        "current": num * 5,
+        "range": num * 100,
     }
     requests.post("http://localhost:5000/api/voltage_current_range", json=data)
     print(num)
-    time.sleep(1)
+    time.sleep(0.2)

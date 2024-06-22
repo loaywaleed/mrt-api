@@ -11,5 +11,6 @@ def handle_connect():
 def update_voltage_range_current(data):
     socketio.emit('vi_range', {
         'voltage': data.get('voltage'),
-        'current': data.get('current')
+        'current': data.get('current'),
+        'range': data.get('range'),
         })
