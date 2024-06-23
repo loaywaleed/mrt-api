@@ -22,3 +22,9 @@ def update_speed_rpm(speed):
         'speed': speed,
         'rpm': rpm
     })
+
+
+def update_blinkers(data):
+    socketio.emit('blinkers', {
+        'blinkers': int(data.get('blinkers')),
+    })
