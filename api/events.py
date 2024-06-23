@@ -14,3 +14,11 @@ def update_voltage_range_current(data):
         'current': data.get('current'),
         'range': data.get('range'),
         })
+
+
+def update_speed(speed):
+    rpm = speed * 10
+    socketio.emit('speed', {
+        'speed': speed,
+        'rpm': rpm
+    })
