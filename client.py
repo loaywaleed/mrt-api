@@ -11,7 +11,7 @@ for i in range(100):
         "range": num * 10,
     }
     speed = {
-        "speed" : num * 5,
+        "speed": num * 5,
     }
     requests.post("http://localhost:5000/api/voltage_current_range", json=data)
     requests.post("http://localhost:5000/api/speed", json=speed)

@@ -13,7 +13,7 @@ def update_voltage_range_current(data):
         'voltage': data.get('voltage'),
         'current': data.get('current'),
         'range': data.get('range'),
-        })
+    })
 
 
 def update_speed(speed):
