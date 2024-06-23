@@ -16,7 +16,7 @@ def update_voltage_range_current(data):
     })
 
 
-def update_speed(speed):
+def update_speed_rpm(speed):
     rpm = speed * 10
     socketio.emit('speed', {
         'speed': speed,

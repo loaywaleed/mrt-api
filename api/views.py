@@ -24,7 +24,7 @@ def speed():
     Receives speed, calculates rpm, then update both on the dashboard
     """
     data = request.json
-    update_speed(int(data.get('speed')))
+    update_speed_rpm(int(data.get('speed')))
     return jsonify(data)
 
 
