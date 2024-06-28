@@ -15,11 +15,12 @@ for i in range(100):
     }
     blinkers = {
         "blinkers": 3,  # 0 off, 1 right, 2 left, 3 on
+        "temperature": num,
     }
     # requests.post("http://localhost:5000/api/voltage_current_range", json=data)
-    # requests.post("http://localhost:5000/api/speed", json=speed)
+    requests.post("http://localhost:5000/api/speed", json=speed)
     requests.post(
-        "http://localhost:5000/api/blinkers_temperates", json=blinkers)
+        "http://localhost:5000/api/blinkers_temperature", json=blinkers)
 
     print(num)
     time.sleep(1)

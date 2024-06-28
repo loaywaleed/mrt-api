@@ -4,7 +4,7 @@ app routes
 
 from flask import jsonify, request
 from . import views, events
-from .events import update_voltage_range_current, update_speed_rpm, update_blinkers
+from .events import update_voltage_range_current, update_speed_rpm, update_blinkers_temperature
 
 
 @views.route("/voltage_current_range", strict_slashes=False, methods=["POST"])
@@ -28,10 +28,10 @@ def speed():
     return jsonify(data)
 
 
-@views.route("/blinkers_temperates", strict_slashes=False, methods=["POST"])
+@views.route("/blinkers_temperature", strict_slashes=False, methods=["POST"])
 def post_voltage():
     data = request.json
-    update_blinkers(data)
+    update_blinkers_temperature(data)
     return jsonify(data)
 
 

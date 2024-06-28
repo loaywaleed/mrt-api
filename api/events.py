@@ -24,7 +24,10 @@ def update_speed_rpm(speed):
     })
 
 
-def update_blinkers(data):
+def update_blinkers_temperature(data):
     socketio.emit('blinkers', {
         'blinkers': int(data.get('blinkers')),
+    })
+    socketio.emit('battery_temperature', {
+        'temperature': int(data.get('temperature')),
     })
