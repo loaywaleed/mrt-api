@@ -4,3 +4,23 @@
 
 - SoC calculations
 - RPM calculations
+
+## setup:
+
+### Create virtual environment
+
+- `sudo apt install python3.8-venv`
+- `python3 -m venv venv`
+- `source venv/bin/activate`
+
+### Install dependencies
+
+- `pip install -r requirements.txt`
+
+### Run server
+
+- `python3 app.y`
+
+### Use client.py for testing (preferably outside of virtual environment)
+
+- `python3 client.py`
