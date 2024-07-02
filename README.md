@@ -6,6 +6,9 @@
 - RPM calculations (done)
 - Distance travelled logic
 - Send an email
+- Documentation
+- Testing
+- Server fork
 
 ## setup:
 
