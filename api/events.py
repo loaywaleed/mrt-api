@@ -7,7 +7,7 @@ from .models import SensorReadings
 @socketio.on('connect', namespace="/")
 def handle_connect():
     print('Client connected')
-    socketio.emit('message', 'Hello from Flask')
+    socketio.emit('message', 'Connected')
 
 
 def update_voltage_range_current(data):
@@ -25,8 +25,9 @@ def update_voltage_range_current(data):
     db.session.commit()
 
 
-def update_speed_rpm(speed):
-    rpm = speed * 10
+def update_speed_rpm(data):
+    speed = data.get('speed')
+    rpm = data.get('rpm')
     socketio.emit('speed', {
         'speed': speed,
         'rpm': rpm
