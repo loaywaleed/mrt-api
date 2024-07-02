@@ -17,3 +17,13 @@ class SensorReadings(db.Model):
     gps_lat = db.Column(db.Float)
     gps_long = db.Column(db.Float)
     temperature = db.Column(db.Integer)
+
+
+class VoltageCurrentRange(db.Model):
+    __tablename__ = "voltage_current_range"
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.Date, default=datetime.now().date())
+    time = db.Column(db.Time, default=datetime.now().time())
+    range_available = db.Column(db.Integer)
+    current = db.Column(db.Float)
+    voltage = db.Column(db.Float)

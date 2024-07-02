@@ -2,8 +2,10 @@
 
 ## todo:
 
-- SoC calculations
-- RPM calculations
+- SoC calculations (done)
+- RPM calculations (done)
+- Distance travelled logic
+- Send an email
 
 ## setup:
 
