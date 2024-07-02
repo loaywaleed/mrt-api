@@ -1,7 +1,7 @@
 from .config import db
 
 
-class sensor_readings(db.Model):
+class SensorReadings(db.Model):
     __tablename__ = "sensors"
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.Date)
