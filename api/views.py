@@ -18,13 +18,13 @@ def voltage_current_range():
 
 
 # Tbd
-@views.route("/speed", strict_slashes=False, methods=["POST"])
+@views.route("/speed_rpm_distance", strict_slashes=False, methods=["POST"])
 def speed():
     """
     Receives speed, calculates rpm, then update both on the dashboard
     """
     data = request.json
-    update_speed_rpm(int(data.get('speed')))
+    update_speed_rpm_distance(int(data.get('speed')))
     return jsonify(data)
 
 
@@ -35,7 +35,7 @@ def post_voltage():
     return jsonify(data)
 
 
-@views.route("/gps_travelled", strict_slashes=False, methods=["POST"])
+@views.route("/gps", strict_slashes=False, methods=["POST"])
 def gps_travelled_email():
     """"
     """

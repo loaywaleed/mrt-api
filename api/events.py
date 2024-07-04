@@ -25,12 +25,14 @@ def update_voltage_range_current(data):
     db.session.commit()
 
 
-def update_speed_rpm(data):
+def update_speed_rpm_distance(data):
     speed = data.get('speed')
     rpm = data.get('rpm')
+    distance = data.get('distance')
     socketio.emit('speed', {
         'speed': speed,
-        'rpm': rpm
+        'rpm': rpm,
+        'distance': distance
     })
 
 
