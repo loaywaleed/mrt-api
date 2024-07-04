@@ -11,17 +11,19 @@ def handle_connect():
 
 
 def update_voltage_range_current(data):
-    voltage = data.get('voltage')
-    current = data.get('current')
+    voltage = float(data.get('voltage'))
+    current = float(data.get('current'))
     range_available = data.get('range')
+    soc = int(data.get(soc))
     socketio.emit('vi_range', {
         'voltage': voltage,
         'current': current,
         'range': range_available,
+        'soc': soc
     })
-    readings = SensorReadings(
-        voltage=voltage, current=current, range_available=range_available)
-    db.session.add(readings)
+    voltage_current_range_readings = SensorReadings(
+        voltage=voltage, current=current, range_available=range_available, soc=soc)
+    db.session.add(voltage_current_range_readings)
     db.session.commit()
 
 
@@ -34,6 +36,10 @@ def update_speed_rpm_distance(data):
         'rpm': rpm,
         'distance': distance
     })
+    speed_rpm_distance = SensorReadings(
+        speed=speed, rpm=rpm, distance=distance)
+    db.session.add(speed_rpm_distance)
+    db.session.commit()
 
 
 def update_blinkers_temperature(data):
@@ -43,11 +49,14 @@ def update_blinkers_temperature(data):
     socketio.emit('battery_temperature', {
         'temperature': int(data.get('temperature')),
     })
+    temp_readings = SensorReadings(temperature=temperature)
+    db.session.add(temp_readings)
+    db.session.commit(temp_readings)
 
 
 def update_gps(data):
     gps_lat = data.get('gps_lat')
     gps_long = data.get('gps_long')
     gps_data = SensorReadings(gps_lat=gps_lat, gps_long=gps_long)
-    db.add(gps_data)
-    db.commit()
+    db.session.add(gps_data)
+    db.session.commit()
