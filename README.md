@@ -4,11 +4,12 @@
 
 - SoC calculations (done)
 - RPM calculations (done)
-- Distance travelled logic
+- Distance travelled logic (done)
 - Send an email
 - Documentation
 - Testing
-- Server fork
+- Server fork (possibly)
+- Add data-acquisition to requirements.txt or requirements2.txt
 
 ## setup:
 
