@@ -24,7 +24,7 @@ def speed():
     Receives speed, calculates rpm, then update both on the dashboard
     """
     data = request.json
-    update_speed_rpm_distance(int(data.get('speed')))
+    update_speed_rpm_distance(data)
     return jsonify(data)
 
 
@@ -40,5 +40,5 @@ def gps_travelled_email():
     """"
     """
     data = request.json
-    update_voltage(int(data.get('voltage')))
+    update_gps(data)
     return jsonify(data)

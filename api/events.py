@@ -26,9 +26,9 @@ def update_voltage_range_current(data):
 
 
 def update_speed_rpm_distance(data):
-    speed = data.get('speed')
-    rpm = data.get('rpm')
-    distance = data.get('distance')
+    speed = int(data.get('speed'))
+    rpm = int(data.get('rpm'))
+    distance = int(data.get('distance'))
     socketio.emit('speed', {
         'speed': speed,
         'rpm': rpm,
@@ -43,3 +43,11 @@ def update_blinkers_temperature(data):
     socketio.emit('battery_temperature', {
         'temperature': int(data.get('temperature')),
     })
+
+
+def update_gps(data):
+    gps_lat = data.get('gps_lat')
+    gps_long = data.get('gps_long')
+    gps_data = SensorReadings(gps_lat=gps_lat, gps_long=gps_long)
+    db.add(gps_data)
+    db.commit()
