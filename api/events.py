@@ -1,7 +1,7 @@
 from .config import socketio
 from . import views
-from .config import db
-from .models import SensorReadings
+#from .config import db
+#from .models import SensorReadings
 
 
 @socketio.on('connect', namespace="/")
