@@ -14,7 +14,7 @@ db = SQLAlchemy()
 def create_app():
     load_dotenv()
     app = Flask('__name__')
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://mrt_user:menofiart_pwd@localhost/mrt_db"
+    app.config['SQLALCHEMY_DATABASE_URI'] = getenv("DATABASE_URI")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = getenv("SECRET_KEY")
     CORS(app, resources={r"/*": {"origins": "*"}})

@@ -17,9 +17,18 @@ def voltage_current_range():
     return jsonify(data)
 
 
-# Tbd
-@views.route("/speed", strict_slashes=False, methods=["POST"])
-def speed():
+@views.route("/range_available", strict_slashes=False, methods=["POST"])
+def voltage_current_range():
+    """
+    Receives hours left and calculates range available
+    """
+    data = request.json
+    update_range_available(data)
+    return jsonify(data)
+
+
+@views.route("/speed_rpm_distance", strict_slashes=False, methods=["POST"])
+def speed_rpm_distance():
     """
     Receives speed, then update both on the dashboard
     """
@@ -29,7 +38,7 @@ def speed():
 
 
 @views.route("/blinkers_temperature", strict_slashes=False, methods=["POST"])
-def post_voltage():
+def blinkers_temperature():
     """
     Receives blinkers and temperature then update both on the dashboard
     """
