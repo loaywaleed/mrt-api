@@ -81,8 +81,7 @@ while True:
     
     if (abs(Gx) > GYRO_THRESHOLD or 
         abs(Gy) > GYRO_THRESHOLD or 
-        abs(Gz) > GYRO_THRESHOLD or
-        magnitude > ACCEL_THRESHOLD):
+        abs(Gz) > GYRO_THRESHOLD ):
         Emergency_flag = 1
     else:
         Emergency_flag = 0

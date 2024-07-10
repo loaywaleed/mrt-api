@@ -1,5 +1,6 @@
 import serial
 import time
+import requests
 
 def knots_to_kmh(speed_knots):
     # 1 knot = 1.852 km/hr
@@ -17,22 +18,29 @@ def read_from_serial():
             if ser.in_waiting > 0:
                 data = ser.readline().decode('ascii', errors='replace').strip().split(',')
                 if data[0] == '$GPRMC' and data[2] == 'A':  # Check for valid data (A = valid, V = void)
-                    utc_time = data[1]  # UTC time
                     latitude = data[3]  # Latitude
                     lat_direction = data[4]  # Latitude direction (N/S)
                     longitude = data[5]  # Longitude
                     lon_direction = data[6]  # Longitude direction (E/W)
-                    speed_knots = data[7]  # Speed in knots
-                    
-                    # Convert speed from knots to km/hr
-                    speed_kmh = knots_to_kmh(speed_knots)
-                    
-                    # Print UTC time, latitude, longitude, and speed in km/hr
-                    print(f"UTC Time: {utc_time}")
                     print(f"Latitude: {latitude} {lat_direction}")
                     print(f"Longitude: {longitude} {lon_direction}")
-                    print(f"Speed: {speed_kmh:.2f} km/hr")
-                    
+
+                    # Prepare data for API
+                    data = {
+                        "latitude": latitude,
+                        "longitude": longitude
+                    }
+
+                    # Send data to API endpoint
+                    try:
+                        response = requests.post("http://localhost:5000/api/gps", json=data)
+                        if response.status_code == 200:
+                            print("Data sent successfully")
+                        else:
+                            print(f"Failed to send data: {response.status_code}")
+                    except requests.exceptions.RequestException as e:
+                        print(f"Error sending data: {e}")
+            
             time.sleep(0.5)  # Small delay to prevent overwhelming the CPU
     
     except KeyboardInterrupt:

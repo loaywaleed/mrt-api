@@ -3,10 +3,10 @@ import board
 import busio
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
-R2 = 1000
-R1 = 192000
 # R2 = 1000
-# R1 = 13000
+# R1 = 192000
+R2 = 1000
+R1 = 14000
 def main():
     # Create the I2C bus
     i2c = busio.I2C(board.SCL, board.SDA)
@@ -25,7 +25,7 @@ def main():
         # Read the voltage from the ADS1115
         # voltage = chan.voltage
         voltage = chan.value * 0.256 / 32765
-        print("Voltage: {:.5f} V".format(voltage))      
+        # print("Voltage: {:.5f} V".format(voltage))      
         # current = voltage/700000
         # print("current: {:.2f} A".format(current))
         battery_voltage = voltage * (R1 + R2) / R2

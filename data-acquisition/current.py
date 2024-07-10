@@ -31,10 +31,10 @@ def main():
             #current = chan.value
             current = chan.voltage
             current = current * 0.25 * 300 / .075  # Assuming voltage-to-current conversion
-            print("Current: {:.2f} A".format(current))
+            print("Current: {:.4f} A".format(current))
             # print("voltage: {:.2f} v".format(chan.voltage))    
             # print("digital valure: {} res".format(chan.value))    
-            time.sleep(3)
+            time.sleep(2)
     except KeyboardInterrupt:
         print("Exiting...")
     except Exception as e:
