@@ -34,8 +34,8 @@
 
 ### Endpoints
 
-- `POST /voltage_current_soc_temperature`
-  data: voltage, current, soc
+- `POST /voltage_current_soc_temp`
+  data: voltage, current, soc, temperature
 - `POST /speed_rpm_distance`
   data: speed, rpm, distance
 - `POST /blinkers`
@@ -44,5 +44,6 @@
   data: gps_lat, gps_long
 - `POST /range`
   data: hours
+  handle cruising range over a certain number
 - `POST /emergency`
   data: email_var
