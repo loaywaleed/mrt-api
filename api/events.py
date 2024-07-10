@@ -10,21 +10,36 @@ def handle_connect():
     socketio.emit('message', 'Connected')
 
 
-def update_voltage_range_current(data):
-    voltage = float(data.get('voltage'))
-    current = float(data.get('current'))
-    range_available = data.get('range')
-    soc = int(data.get(soc))
-    socketio.emit('vi_range', {
-        'voltage': voltage,
-        'current': current,
-        'range': range_available,
-        'soc': soc
+def update_voltage_current_soc(data):
+    try:
+        voltage = float(data.get('voltage'))
+        current = float(data.get('current'))
+        soc = int(data.get(soc))
+        socketio.emit('vi', {
+            'voltage': voltage,
+            'current': current,
+        })
+        socketio.emit('soc', {
+            'soc': soc,
+        })
+        voltage_current_soc_readings = SensorReadings(
+            voltage=voltage, current=current, soc=soc)
+        # db.session.add(voltage_current_soc_readings)
+        # db.session.commit()
+    except:
+        print("Failed to deserialize JSON file")
+
+
+def update_range_available(data):
+    hours_available = data.get('hours')
+    average_speed = 30
+    range_available = hours * average_speed
+    socketio.emit('range_available', {
+        'range_available': range_available,
     })
-    voltage_current_range_readings = SensorReadings(
-        voltage=voltage, current=current, range_available=range_available, soc=soc)
-    db.session.add(voltage_current_range_readings)
-    db.session.commit()
+    range_available_readings = SensorReadings(range_available=range_available)
+    # db.session.add(range_available_readings)
+    # db.session.commit()
 
 
 def update_speed_rpm_distance(data):
@@ -38,8 +53,8 @@ def update_speed_rpm_distance(data):
     })
     speed_rpm_distance = SensorReadings(
         speed=speed, rpm=rpm, distance=distance)
-    db.session.add(speed_rpm_distance)
-    db.session.commit()
+    # db.session.add(speed_rpm_distance)
+    # db.session.commit()
 
 
 def update_blinkers_temperature(data):
@@ -50,13 +65,13 @@ def update_blinkers_temperature(data):
         'temperature': int(data.get('temperature')),
     })
     temp_readings = SensorReadings(temperature=temperature)
-    db.session.add(temp_readings)
-    db.session.commit(temp_readings)
+    # db.session.add(temp_readings)
+    # db.session.commit()
 
 
 def update_gps(data):
     gps_lat = data.get('gps_lat')
     gps_long = data.get('gps_long')
     gps_data = SensorReadings(gps_lat=gps_lat, gps_long=gps_long)
-    db.session.add(gps_data)
-    db.session.commit()
+    # db.session.add(gps_data)
+    # db.session.commit()
