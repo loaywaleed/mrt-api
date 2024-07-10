@@ -30,3 +30,15 @@
 ### Use client.py for testing (preferably outside of virtual environment)
 
 - `python3 client.py`
+
+
+### Endpoints
+
+- `/voltage_current_soc`
+  data: voltage, current, soc
+- `/speed`
+  data: speed, rpm, distance
+- `/blinkers_temperature`
+  data: blinkers, temperature
+- `/gps`
+  data: gps_lat, gps_long
