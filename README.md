@@ -34,11 +34,15 @@
 
 ### Endpoints
 
-- `/voltage_current_soc`
+- `POST /voltage_current_soc_temperature`
   data: voltage, current, soc
-- `/speed`
+- `POST /speed_rpm_distance`
   data: speed, rpm, distance
-- `/blinkers_temperature`
-  data: blinkers, temperature
-- `/gps`
+- `POST /blinkers`
+  data: blinkers
+- `POST /gps`
   data: gps_lat, gps_long
+- `POST /range`
+  data: hours
+- `POST /emergency`
+  data: email_var
