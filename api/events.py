@@ -12,19 +12,15 @@ def handle_connect():
 
 def update_voltage_current_soc_temp(data):
     try:
-        voltage = float(data.get('voltage'))
-        current = float(data.get('current'))
-        soc = int(data.get('soc'))
-        temp = int(data.get('temperature'))
         socketio.emit('vi', {
-            'voltage': voltage,
-            'current': current,
+            'voltage': float(data.get('voltage')),
+            'current': float(data.get('current')),
         })
         socketio.emit('soc', {
-            'soc': soc,
+            'soc': int(data.get('soc')),
         })
         socketio.emit('battery_temperature', {
-            'temperature': temp,
+            'temperature': int(data.get('temperature')),
         })
         # voltage_current_soc_readings = SensorReadings(
         #     voltage=voltage, current=current, soc=soc)
@@ -83,7 +79,10 @@ def update_blinkers(data):
 def update_range_available(data):
     hours = data.get('hours')
     average_speed = 35
-    distance_available = hours * average_speed
+    range_available = hours * average_speed
+    socketio.emit('range', {
+        'range': range_available
+    })
     # range_available = SensorReadings(range_available=range_available)
     # db.session.add(distance_available)
     # db.session.commit()

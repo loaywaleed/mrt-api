@@ -8,20 +8,24 @@ for i in range(100):
     data = {
         "voltage": num,
         "current": num * 5,
-        "range": num * 10,
+        "soc": num,
+        "temperature": num
     }
     speed = {
         "speed": num * 3,
-        "rpm": num * 3 * 10
+        "rpm": num * 3 * 10,
+        "distance": num * 2
     }
     blinkers = {
-        "blinkers": 3,  # 0 off, 1 right, 2 left, 3 on
-        "temperature": num,
+        "blinkers": 1,  # 0 off, 1 right, 2 left, 3 on
     }
-    requests.post("http://localhost:5000/api/voltage_current_soc", json=data)
-    requests.post("http://localhost:5000/api/speed", json=speed)
-    # requests.post(
-    #     "http://localhost:5000/api/blinkers_temperature", json=blinkers)
+    requests.post(
+        "http://localhost:5000/api/voltage_current_soc_temp", json=data)
+    requests.post("http://localhost:5000/api/speed_rpm_distance", json=speed)
+    requests.post(
+        "http://localhost:5000/api/blinkers", json=blinkers)
+    requests.post(
+        "http://localhost:5000/api/blinkers", json=blinkers)
 
     print(num)
     time.sleep(2)

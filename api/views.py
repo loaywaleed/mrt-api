@@ -4,7 +4,7 @@ app routes
 
 from flask import jsonify, request
 from . import views, events
-from .events import update_voltage_current_soc_temp, update_speed_rpm_distance, update_blinkers
+from .events import update_voltage_current_soc_temp, update_speed_rpm_distance, update_blinkers, update_range_available
 
 
 @views.route("/voltage_current_soc_temp", strict_slashes=False, methods=["POST"])
@@ -14,6 +14,16 @@ def voltage_current_soc():
     """
     data = request.json
     update_voltage_current_soc_temp(data)
+    return jsonify(data)
+
+
+@views.route("/range", strict_slashes=False, methods=["POST"])
+def range_available():
+    """
+    Receives voltage, current, and soc and updates them on the dashboard
+    """
+    data = request.json
+    update_range_available(data)
     return jsonify(data)
 
 
