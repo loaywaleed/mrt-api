@@ -52,7 +52,7 @@ def main():
             # Read voltage from channel 0 (P0) and compute current
             ads.gain = 16  # Set gain to 16 (corresponds to +/- 0.256V full-scale range)
             time.sleep(0.1)  # Delay to allow ADC to settle
-            current_channel = AnalogIn(ads, ADS.P0)
+            current_channel = AnalogIn(ads, ADS.P1)
             current_voltage = abs(current_channel.voltage)
             print("Current.voltage: {:.4f} V".format(current_voltage), end=" ")
             current = current_voltage * 0.5 * 300 / 0.075  # Assuming voltage-to-current conversion
@@ -62,7 +62,7 @@ def main():
             # Read voltage from channel 1 (P1)
             ads.gain = 1  # Set gain to 1 (corresponds to +/- 4.096V full-scale range)
             time.sleep(0.1)  # Delay to allow ADC to settle
-            chan = AnalogIn(ads, ADS.P1)
+            chan = AnalogIn(ads, ADS.P0)
             voltage = chan.voltage
             battery_voltage = voltage * 63.0296 / 4.096  # Adjust based on resistor divider
             print("Battery Voltage 2: {:.2f} V".format(battery_voltage))

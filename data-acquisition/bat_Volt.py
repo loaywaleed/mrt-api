@@ -15,7 +15,7 @@ def main():
     ads = ADS.ADS1115(i2c)
     
     # Create a single-ended input on channel 0
-    chan = AnalogIn(ads, ADS.P0)
+    chan = AnalogIn(ads, ADS.P4)
     
     # Configure the ADS1115 gain
     # Gain 1 corresponds to a full-scale range of +/- 4.096V
