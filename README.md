@@ -25,7 +25,7 @@
 
 ### Run server
 
-- `python3 app.y`
+- `gunicorn --worker-class eventlet -w 1 app:app`
 
 ### Use client.py for testing (preferably outside of virtual environment)
 
