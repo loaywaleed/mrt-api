@@ -9,7 +9,7 @@ for i in range(100):
         "voltage": num,
         "current": num * 5,
         "soc": num,
-        "temperature": num
+        "temp" : num,
     }
     speed = {
         "speed": num * 3,
@@ -23,11 +23,11 @@ for i in range(100):
         "hours": num/10
     }
     requests.post(
-        "http://localhost:8000/api/voltage_current_soc_temp", json=data)
-    requests.post("http://localhost:8000/api/speed_rpm_distance", json=speed)
+        "http://127.0.0.1:5000/api/voltage_current_soc_temp", json=data)
+    requests.post("http://localhost:5000/api/speed_rpm_distance", json=speed)
     requests.post(
-        "http://localhost:8000/api/blinkers", json=blinkers)
+        "http://localhost:5000/api/blinkers", json=blinkers)
     requests.post(
-        "http://localhost:8000/api/range", json=range_available)
+        "http://localhost:5000/api/range", json=range_available)
     print(num)
-    time.sleep(2)
+    time.sleep(0.1)

@@ -22,7 +22,7 @@ def create_app():
     #db.init_app(app)
     socketio.init_app(app)
     from .views import views
-    app.register_blueprint(views, url_prefix="/api")
+    app.register_blueprint(views, url_prefix='/api')
     #from .models import SensorReadings
 
     #with app.app_context():

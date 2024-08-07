@@ -41,8 +41,7 @@ gast==0.5.2
 geographiclib==2.0
 geopy==2.4.1
 gpiozero==2.0
-gps==3.22
-gyp==0.1
+
 html5lib==1.1
 idna==3.3
 importlib-metadata==4.12.0

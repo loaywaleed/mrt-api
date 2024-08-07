@@ -14,15 +14,6 @@ def voltage_current_soc():
     """
     data = request.json
     update_voltage_current_soc_temp(data)
-    return jsonify(data)
-
-
-@views.route("/range", strict_slashes=False, methods=["POST"])
-def range_available():
-    """
-    Receives voltage, current, and soc and updates them on the dashboard
-    """
-    data = request.json
     update_range_available(data)
     return jsonify(data)
 

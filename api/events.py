@@ -20,7 +20,7 @@ def update_voltage_current_soc_temp(data):
             'soc': int(data.get('soc')),
         })
         socketio.emit('battery_temperature', {
-            'temperature': int(data.get('temp')),
+            'temperature': 37,
         })
         # voltage_current_soc_readings = SensorReadings(
         #     voltage=voltage, current=current, soc=soc)
